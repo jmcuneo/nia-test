@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>CS4241 Assignment 1 - Nia Junod</title>
+  <meta charset="utf-8">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const header = document.querySelector("header h1");
+    header.style.opacity = "0";
+
+    let opacity = 0;
+    let fadingIn = true;
+
+    function animateHeader() {
+      if (fadingIn && opacity < 1) {
+        opacity += 0.02;
+        header.style.opacity = opacity;
+      } else if (!fadingIn && opacity > 0.8) {
+        opacity -= 0.01;
+        header.style.opacity = opacity;
+      }
+
+      if (opacity >= 1) fadingIn = false;
+      if (opacity <= 0.8) fadingIn = true;
+
+      requestAnimationFrame(animateHeader);
+    }
+
+    animateHeader();
+
+    const text = [
+      "Nia is typing...",
+      "console.log('Hello World!');",
+      "Learning + coding + serving 💻☕",
+      "WPI ❤️ Service Industry"
+    ];
+
+    let line = 0;
+    let char = 0;
+    const typingText = document.getElementById("typing-text");
+
+    function typeAnimation() {
+      if (!typingText) return; // safety check
+
+      if (line < text.length) {
+        if (char < text[line].length) {
+          typingText.textContent += text[line].charAt(char);
+          char++;
+          setTimeout(typeAnimation, 50); // typing speed
+        } else {
+          typingText.textContent += "\n";
+          line++;
+          char = 0;
+          setTimeout(typeAnimation, 500); // pause between lines
+        }
+      } else {
+        // restart after a short pause
+        setTimeout(() => {
+          typingText.textContent = "";
+          line = 0;
+          char = 0;
+          typeAnimation();
+        }, 2000);
+      }
+    }
+
+    typeAnimation();
+
+  });
+
+
+
+</script>
+
+
+
+
+
+  <body>
+<header>
+  <h1>Information about me (Nia Junod)</h1>
+  <p>Senior at WPI | Computer Science Major, Business Minor</p>
+</header>
+
+<main>
+  <section>
+    <p>
+      Hi! My name is <strong>Nia Junod</strong> and I’m a senior at WPI. I’m studying
+      Computer Science with a minor in Business.
+    </p>
+
+    <p>
+      This summer, I worked as an IT intern at the Pridwin Hotel, where I’ve also worked the past four summers.
+      I also picked up a second job at Leon 1909 as a server.
+    </p>
+  </section>
+
+  <section>
+    <h2>Other CS courses I’ve taken:</h2>
+    <ul>
+      <li>CS 1101 – Intro to Programming</li>
+      <li>CS 2102 – Object-Oriented Programming</li>
+      <li>CS 2303 – Systems Programming</li>
+      <li>CS 2011 – Assembly Language & Machine Organization</li>
+      <li>CS 2022 – Discrete Math</li>
+      <li>CS 2223 – Algorithms</li>
+      <li>CS 3013 – Operating Systems</li>
+      <li>CS 3043 – Social Implications of Computing</li>
+      <li>CS 3133 – Foundations of CS</li>
+      <li>CS 3431 – Databases</li>
+      <li>CS 3733 – Software Engineering</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <p>
+      I have worked in the restaurant industry for 6 years now, and I actually plan on going back to the service industry once I graduate.
+      Before this summer, I was torn between pursuing a computer science career such as software engineering, but I really fell in love with the service industry and working in a hotel.
+      I realized that I could combine both worlds — handling the IT side of restaurant operations while also enjoying the hospitality industry and making decent money.
+    </p>
+    <ul>
+      <li>The Pridwin Hotel (IT Intern, Server, Hostess, Busser)</li>
+      <li>Leon 1909 (Server)</li>
+      <li>Marie Eiffel (Line Cook / Prep Cook)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills / Experience with Tech</h2>
+    <ul>
+      <li>HTML – some</li>
+      <li>CSS – some</li>
+      <li>Java – some</li>
+      <li>JavaScript – some</li>
+      <li>Python – some</li>
+      <li>Unit Testing – some</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Fun Animation</h2>
+    <div id="typing-container">
+      <div class="computer">
+        <div class="screen">
+          <pre id="typing-text"></pre>
+        </div>
+        <div class="keyboard"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>This page was made by Nia Junod</p>
+</footer>
+
+<!-- Script -->
+<script src="script.js"></script>
+</body>
+</html>
+
